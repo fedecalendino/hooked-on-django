@@ -28,3 +28,10 @@ DJANGO_HOOKS = {
 ```
 
 Given that configuration, the method `method` and the method `other` from the module `/path/to` are going to be executed after a delay of `10` seconds.
+
+
+### to do
+
+* Add kwargs for each hook
+
+
