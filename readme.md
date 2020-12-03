@@ -1,11 +1,12 @@
-### hooked-on-django 
+## hooked-on-django 
 
 [![Version](https://img.shields.io/pypi/v/hooked--on--django?label=pypi&color=blue&logo=pypi)](https://pypi.org/project/hooked-on-django)
 
 
-#### startup hook
+### startup hook
 
-This hook will trigger all indicated methods in `HOOKS` after django finished its startup.
+All methods listed under this hook will be executed after Django finishes its startup process.
+
 
 `settings.py`
 
@@ -18,33 +19,55 @@ INSTALLED_APPS = [
 
 DJANGO_HOOKS = {
     "STARTUP": {
-        "DELAY": 10,
-        "HOOKS": [
-            "path.to.method",
-            "path.to.other",
-        ]
+        "path.to.method": {
+            "delay": 0,
+            "args" : [
+                ...
+            ],
+            "kwargs": {
+                ...
+            },
+        }
     }
 }
 ```
 
-Given that configuration, the method `method` and the method `other` from the module `/path/to` are going to be executed after a delay of `10` seconds.
+##### examples
 
+```
+file: /path/to.py
 
-### to do
+def method(param1: str, param2: int):
+    ...
 
-* Add kwargs for each hook
+def other(param1: str = "", param2: int = 0):
+    ...
+
+def another():
+    ... 
+```
+
+To add a hook to each of these methods, the following configuration can be used:
+
 
 ```
 DJANGO_HOOKS = {
     "STARTUP": {
-        "DELAY": 10,
-        "HOOKS": [
-            "path.to.method": {"param1": "value1"},
-            "path.to.other": {"param2": 2},
-            "path.to.another": {},
-        ]
+        "path.to.method": {
+            "delay": 10,
+            "args": ["string", 123456]
+        },
+        "path.to.other": {
+            "kwargs": {
+                "param1": "string", 
+                "param2": 123456
+            }
+        },
+        "path.to.other": {},  # No params needed.
     }
 }
 ```
 
+note: additionaly, the method `method` will be executed after a 10 seconds delay.
 
+🎣️
