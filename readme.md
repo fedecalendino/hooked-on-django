@@ -5,7 +5,7 @@ Simple django application to trigger hooked methods.
 
 #### startup
 
-This hook will trigger after a django project is running.
+This hook will trigger all indicated methods after django finished its startup.
 
 `settings.py`
 
@@ -26,4 +26,4 @@ DJANGO_HOOKS = {
 }
 ```
 
-Given this configuration the method `method` stored in the module `/path/to` will be executed after a delay of `10` seconds.
+Given that configuration, the method `method` from the module `/path/to` will be executed after a delay of `10` seconds.
