@@ -1,6 +1,6 @@
 ### hooked-on-django 
 
-[![Version](https://img.shields.io/pypi/v/hooked--on--django?label=&color=lightgrey&logo=pypi)](https://pypi.org/project/hooked-on-django)
+[![Version](https://img.shields.io/pypi/v/hooked--on--django?label=pypi&color=blue&logo=pypi)](https://pypi.org/project/hooked-on-django)
 
 
 #### startup hook
