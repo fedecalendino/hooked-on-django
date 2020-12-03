@@ -34,4 +34,16 @@ Given that configuration, the method `method` and the method `other` from the mo
 
 * Add kwargs for each hook
 
+```
+DJANGO_HOOKS = {
+    "STARTUP": {
+        "DELAY": 10,
+        "HOOKS": [
+            "path.to.method": {"param1": "value1"}
+            "path.to.other": {"param2": 2}
+        ]
+    }
+}
+```
+
 
