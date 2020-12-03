@@ -9,26 +9,29 @@ from django.conf import settings
 logger = logging.getLogger(__name__)
 
 
+def runner(hook: str, config: dict):
+    args = config.get("args", [])
+    kwargs = config.get("kwargs", {})
+    delay = config.get("delay", 0)
+
+    module, name = hook.rsplit(".", 1)
+    method = getattr(import_module(module), name)
+
+    sleep(delay)
+    method(*args, **kwargs)
+
+
 class StartupConfig(AppConfig):
     name = "hooks.apps.startup"
 
     # pylint: disable=no-self-use
     def ready(self):
-        def run(target: callable, zzz: int = 0):
-            sleep(zzz)
-            target()
-
         logger.info("init startup routine")
 
-        prefs = settings.DJANGO_HOOKS["STARTUP"]
-        delay = prefs.get("DELAY", 0)
+        hooks = settings.DJANGO_HOOKS["STARTUP"]
 
-        for hook in prefs.get("HOOKS", []):
+        for hook, config in hooks.items():
             logger.info("running hook: %s", hook)
-
-            module, name = hook.rsplit(".", 1)
-            method = getattr(import_module(module), name)
-
-            threading.Thread(target=run, args=[method, delay]).start()
+            threading.Thread(target=runner, args=[hook, config]).start()
 
         logger.info("finished startup routine")
