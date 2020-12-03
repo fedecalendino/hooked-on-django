@@ -4,9 +4,18 @@ language: python
 
 python: 3.8
 
+# Install the codecov pip dependency
+install:
+  - pip install -r requirements.txt
+
+# Run the unit test
+script:
+  - coverage run --source hooks -m unittest discover
+
 jobs:
   fast_finish: true
   include:
+    - python: 3.8
     - stage: deploy
       python: 3.8
       if: tag IS present
