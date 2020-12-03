@@ -10,7 +10,7 @@ with open(path.join(this_directory, "readme.md"), encoding="utf-8") as f:
 
 setup(
     name="hooked-on-django",
-    version="0.0.2",
+    version="0.1.0",
     url="https://github.com/fedecalendino/hooked-on-django",
     description="Simple django application to trigger hooked methods.",
     long_description=long_description,
