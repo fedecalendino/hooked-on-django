@@ -41,6 +41,7 @@ DJANGO_HOOKS = {
         "HOOKS": [
             "path.to.method": {"param1": "value1"}
             "path.to.other": {"param2": 2}
+            "path.to.another": {}
         ]
     }
 }
