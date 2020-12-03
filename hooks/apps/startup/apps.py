@@ -26,13 +26,9 @@ class StartupConfig(AppConfig):
         for hook in prefs.get("HOOKS", []):
             logger.info("running hook: %s", hook)
 
-            module, name = hook.rsplit('.', 1)
+            module, name = hook.rsplit(".", 1)
             method = getattr(import_module(module), name)
 
-            threading.Thread(
-                target=run,
-                args=[method, delay]
-            ).start()
+            threading.Thread(target=run, args=[method, delay]).start()
 
         logger.info("finished startup routine")
-
