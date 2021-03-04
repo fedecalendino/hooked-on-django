@@ -4,13 +4,13 @@ from setuptools import setup
 
 this_directory = path.abspath(path.dirname(__file__))
 
-with open(path.join(this_directory, "readme.md"), encoding="utf-8") as f:
+with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
     long_description = f.read()
 
 
 setup(
     name="hooked-on-django",
-    version="0.1.0",
+    version="0.1.1",
     url="https://github.com/fedecalendino/hooked-on-django",
     description="Simple django application to trigger hooked methods.",
     long_description=long_description,
