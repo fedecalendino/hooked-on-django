@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "hooked-on-django"
+description = "Simple django application to trigger hooked methods."
+documentation = "https://github.com/fedecalendino/hooked-on-django/blob/main/README.md"
+homepage = "https://github.com/fedecalendino/hooked-on-django"
+license = "MIT"
+readme = "README.md"
+version = "0.2.0"
+
+authors = [
+  "Fede Calendino <fede@calendino.com>",
+]
+classifiers = [
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+]
+keywords = [
+  "django",
+  "hooks",
+  "startup",
+]
+packages = [
+  { include = "hooks" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+django = "^4.0.6"
+
+[tool.poetry.dev-dependencies]
+ddt = "^1.5.0"
+coverage = "^6.4.1"
+black = "^22.6.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
